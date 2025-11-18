@@ -416,9 +416,8 @@ body {
 
 @media (max-width: 1024px) {
     .mobile-company-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
+        display: flex;
+        flex-direction: column;
         gap: 8px;
     }
 }
@@ -426,12 +425,12 @@ body {
 .mobile-company-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 10px 8px;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 12px 16px;
     background: #FFFFFF;
     border: 2px solid #E0E0E0;
-    border-radius: 24px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
     touch-action: manipulation;
@@ -439,10 +438,8 @@ body {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    font-size: 12px;
+    font-size: 14px;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .mobile-company-btn:active {
@@ -469,14 +466,10 @@ body {
 
 
 .mobile-btn-text {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #000000;
     transition: color 0.2s;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
 }
 
 .marker-btn {
@@ -880,9 +873,8 @@ body {
 
     /* Show mobile company list at bottom of map */
     .mobile-company-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
+        display: flex;
+        flex-direction: column;
         order: 2;
         margin-top: 0;
         gap: 8px;
