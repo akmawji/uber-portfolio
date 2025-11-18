@@ -396,6 +396,8 @@ body {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .mobile-company-list::-webkit-scrollbar {
@@ -440,20 +442,6 @@ body {
     position: relative;
 }
 
-.mobile-uber-dot {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mobile-uber-text {
-    color: #FFFFFF;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
-}
 
 .mobile-btn-text {
     font-size: 14px;
