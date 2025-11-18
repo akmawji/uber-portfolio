@@ -329,6 +329,8 @@ body {
     max-width: 600px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .map-hint {
@@ -390,7 +392,7 @@ body {
 .mobile-company-list {
     display: none;
     gap: 8px;
-    padding: 16px 12px;
+    padding: 12px;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -398,6 +400,8 @@ body {
     -ms-overflow-style: none;
     width: 100%;
     box-sizing: border-box;
+    background: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
 }
 
 .mobile-company-list::-webkit-scrollbar {
@@ -834,6 +838,8 @@ body {
     .experience-map {
         max-width: 100%;
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     /* Hide desktop markers on mobile */
@@ -841,13 +847,15 @@ body {
         display: none;
     }
 
-    /* Show mobile company list */
+    /* Show mobile company list at bottom of map */
     .mobile-company-list {
         display: flex;
+        order: 2;
+        margin-top: 0;
     }
 
-
     .map-container {
+        order: 1;
         border-radius: 0;
         aspect-ratio: 4/3;
         min-height: 300px;
