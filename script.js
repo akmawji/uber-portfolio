@@ -77,6 +77,7 @@ function showExperience(companyKey) {
     if (!experience) return;
 
     const panel = document.getElementById('experiencePanel');
+    const backdrop = document.getElementById('panelBackdrop');
     const companyEl = document.getElementById('expCompany');
     const locationEl = document.getElementById('expLocation');
     const datesEl = document.getElementById('expDates');
@@ -97,11 +98,25 @@ function showExperience(companyKey) {
     });
 
     panel.classList.add('active');
+    if (backdrop) {
+        backdrop.classList.add('active');
+    }
+    
+    // Prevent body scroll when panel is open on mobile
+    document.body.style.overflow = 'hidden';
 }
 
 function hideExperience() {
     const panel = document.getElementById('experiencePanel');
+    const backdrop = document.getElementById('panelBackdrop');
+    
     panel.classList.remove('active');
+    if (backdrop) {
+        backdrop.classList.remove('active');
+    }
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -146,16 +161,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close panel when clicking outside
+    // Close panel when clicking backdrop
+    const backdrop = document.getElementById('panelBackdrop');
+    if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            hideExperience();
+            currentActiveMarker = null;
+            markerButtons.forEach(btn => btn.classList.remove('active'));
+        });
+    }
+
+    // Close panel when clicking outside (desktop)
     document.addEventListener('click', function(e) {
         const panel = document.getElementById('experiencePanel');
         const isClickOnButton = e.target.closest('.marker-btn');
         const isClickOnPanel = e.target.closest('.experience-panel');
+        const isClickOnBackdrop = e.target.closest('.panel-backdrop');
         
-        if (!isClickOnButton && !isClickOnPanel && panel && panel.classList.contains('active')) {
-            hideExperience();
-            currentActiveMarker = null;
-            markerButtons.forEach(btn => btn.classList.remove('active'));
+        if (!isClickOnButton && !isClickOnPanel && !isClickOnBackdrop && panel && panel.classList.contains('active')) {
+            // Only close on desktop (when backdrop is not visible)
+            if (window.innerWidth > 1024) {
+                hideExperience();
+                currentActiveMarker = null;
+                markerButtons.forEach(btn => btn.classList.remove('active'));
+            }
         }
     });
     // Time selector dropdown functionality
