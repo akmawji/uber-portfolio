@@ -122,30 +122,47 @@ function hideExperience() {
 document.addEventListener('DOMContentLoaded', function() {
     let currentActiveMarker = null;
     
-    // Map marker button click handlers
+    // Function to handle company selection
+    function handleCompanyClick(button, company) {
+        if (company) {
+            // If clicking the same button, toggle it off
+            if (currentActiveMarker === company) {
+                hideExperience();
+                currentActiveMarker = null;
+                // Remove active from all buttons (desktop and mobile)
+                document.querySelectorAll('.marker-btn, .mobile-company-btn').forEach(btn => btn.classList.remove('active'));
+            } else {
+                // Show new experience
+                showExperience(company);
+                currentActiveMarker = company;
+                // Remove active from all buttons, then add to clicked one
+                document.querySelectorAll('.marker-btn, .mobile-company-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            }
+        }
+    }
+    
+    // Desktop map marker button click handlers
     const markerButtons = document.querySelectorAll('.marker-btn');
     
     markerButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            
             const company = this.getAttribute('data-company');
-            
-            if (company) {
-                // If clicking the same button, toggle it off
-                if (currentActiveMarker === company) {
-                    hideExperience();
-                    currentActiveMarker = null;
-                    markerButtons.forEach(btn => btn.classList.remove('active'));
-                } else {
-                    // Show new experience
-                    showExperience(company);
-                    currentActiveMarker = company;
-                    markerButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            }
+            handleCompanyClick(this, company);
+        });
+    });
+
+    // Mobile company button click handlers
+    const mobileCompanyButtons = document.querySelectorAll('.mobile-company-btn');
+    
+    mobileCompanyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const company = this.getAttribute('data-company');
+            handleCompanyClick(this, company);
         });
     });
 
@@ -157,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             hideExperience();
             currentActiveMarker = null;
-            markerButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.marker-btn, .mobile-company-btn').forEach(btn => btn.classList.remove('active'));
         });
     }
 
@@ -169,14 +186,14 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             hideExperience();
             currentActiveMarker = null;
-            markerButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.marker-btn, .mobile-company-btn').forEach(btn => btn.classList.remove('active'));
         });
     }
 
     // Close panel when clicking outside (desktop)
     document.addEventListener('click', function(e) {
         const panel = document.getElementById('experiencePanel');
-        const isClickOnButton = e.target.closest('.marker-btn');
+        const isClickOnButton = e.target.closest('.marker-btn, .mobile-company-btn');
         const isClickOnPanel = e.target.closest('.experience-panel');
         const isClickOnBackdrop = e.target.closest('.panel-backdrop');
         
@@ -185,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.innerWidth > 1024) {
                 hideExperience();
                 currentActiveMarker = null;
-                markerButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.marker-btn, .mobile-company-btn').forEach(btn => btn.classList.remove('active'));
             }
         }
     });

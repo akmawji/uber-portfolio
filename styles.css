@@ -386,6 +386,82 @@ body {
     pointer-events: none;
 }
 
+/* Mobile Company List */
+.mobile-company-list {
+    display: none;
+    gap: 8px;
+    padding: 16px 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mobile-company-list::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-company-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #FFFFFF;
+    border: 2px solid #E0E0E0;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-company-btn:active {
+    transform: scale(0.95);
+}
+
+.mobile-company-btn.active {
+    background: #000000;
+    border-color: #000000;
+    color: #FFFFFF;
+}
+
+.mobile-company-btn.active .mobile-btn-text {
+    color: #FFFFFF;
+}
+
+.mobile-btn-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.mobile-uber-dot {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-uber-text {
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.mobile-btn-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
+    transition: color 0.2s;
+}
+
 .marker-btn {
     position: absolute;
     width: 40px;
@@ -770,6 +846,16 @@ body {
     .experience-map {
         max-width: 100%;
         width: 100%;
+    }
+
+    /* Hide desktop markers on mobile */
+    .desktop-markers {
+        display: none;
+    }
+
+    /* Show mobile company list */
+    .mobile-company-list {
+        display: flex;
     }
 
 
