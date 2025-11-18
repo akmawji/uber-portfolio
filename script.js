@@ -8,7 +8,7 @@ const experienceData = {
         dates: 'Education',
         role: 'Student',
         bullets: [
-            'Pursuing degree in Computer Science',
+            'Pursuing degree in Software Engineering',
             'Building foundation for software engineering career'
         ]
     },

@@ -371,7 +371,6 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    object-fit: cover;
 }
 
 .marker-visual {
@@ -770,12 +769,15 @@ body {
 
     .experience-map {
         max-width: 100%;
+        width: 100%;
     }
+
 
     .map-container {
         border-radius: 0;
-        aspect-ratio: 16/9;
+        aspect-ratio: 4/3;
         min-height: 300px;
+        max-height: 400px;
     }
 
     .right-section {
@@ -908,6 +910,7 @@ body {
 
     .map-container {
         min-height: 250px;
+        max-height: 350px;
     }
 
     .right-section {
@@ -1091,6 +1094,7 @@ body {
 
     .map-container {
         min-height: 200px;
+        max-height: 300px;
     }
 
     .right-section {
