@@ -40,6 +40,8 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 64px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .nav-left {
@@ -907,9 +909,16 @@ body {
 }
 
 @media (max-width: 768px) {
+    .top-nav {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     .nav-container {
         padding: 0 12px;
         height: 56px;
+        max-width: 100%;
     }
 
     .nav-links {
@@ -1097,9 +1106,16 @@ body {
 }
 
 @media (max-width: 480px) {
+    .top-nav {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     .nav-container {
         padding: 0 10px;
         height: 52px;
+        max-width: 100%;
     }
 
     .logo {
